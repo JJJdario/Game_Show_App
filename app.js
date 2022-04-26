@@ -17,12 +17,11 @@ const phrases = [
   "Hope is the last thing ever lost",
   "Shopping is cheaper than therapy",
 ];
-const phrasesLenght = phrases.length;
 
 function getRandomPhraseAsArray(arr) {
-  const ramdomArr = Math.floor(Math.random() * arr);
-  return ramdomArr;
+  const ramdomNumber = Math.floor(Math.random() * arr.length);
+  const ramdomArr = arr[ramdomNumber];
+  const split = ramdomArr.split("");
+  return split;
 }
-const ramdomPhrase = phrases[getRandomPhraseAsArray(phrasesLenght)];
-let split = ramdomPhrase.length;
-console.log(split);
+const splitedArray = getRandomPhraseAsArray(phrases);
