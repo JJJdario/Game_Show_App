@@ -1,8 +1,11 @@
 const qwerty = document.getElementById("qwerty");
 const phrase = document.getElementById("phrase");
-const missed = 0;
+const ul = document.querySelector("#phrase ul");
+const button = document.querySelector("button");
+const imgHarts = document.querySelectorAll("img");
+let missed = 0;
 
-//for (let i = 0; i < missed.lenght; i++) {}
+for (let i = 0; i < 5; i++) {}
 
 const overlay = document.getElementById("overlay");
 const btnStartGame = document.querySelector("a");
@@ -11,11 +14,11 @@ btnStartGame.addEventListener("click", () => {
 });
 
 const phrases = [
-  "Your best teacher is your last mistake",
+  "Dreams come true",
   "Every moment matters",
-  "Never regret anything that made you smile",
-  "Hope is the last thing ever lost",
-  "Shopping is cheaper than therapy",
+  "Bitcoin is the future",
+  "Time is money",
+  "Now or never ",
 ];
 
 function getRandomPhraseAsArray(arr) {
@@ -24,8 +27,6 @@ function getRandomPhraseAsArray(arr) {
   const split = ramdomArr.split(``);
   return split;
 }
-
-const ul = document.querySelector("#phrase ul");
 
 function addPhraseToDisplay(arr) {
   for (let i = 0; i < arr.length; i++) {
@@ -41,4 +42,28 @@ function addPhraseToDisplay(arr) {
   }
 }
 const splitedArray = getRandomPhraseAsArray(phrases);
-const array = addPhraseToDisplay(splitedArray);
+addPhraseToDisplay(splitedArray);
+
+function checkLetter(btn) {
+  let match = null;
+  const letter = document.querySelectorAll(".letter");
+  for (let i = 0; i < letter.length; i++) {
+    if (letter[i].textContent.toLowerCase() === btn.textContent) {
+      letter[i].classList.add("show");
+      match = btn.textContent;
+    }
+  }
+  return match;
+}
+
+qwerty.addEventListener("click", (e) => {
+  let target = e.target;
+  if (target.tagName === "BUTTON" && target.className !== "chosen") {
+    target.className = "chosen";
+    let letterFound = checkLetter(target);
+    if (letterFound === null) {
+      imgHarts[missed].setAttribute("src", "images/lostHeart.png");
+      missed++;
+    }
+  }
+});
