@@ -3,12 +3,12 @@ const phrase = document.getElementById("phrase");
 const ul = document.querySelector("#phrase ul");
 const button = document.querySelector("button");
 const imgHarts = document.querySelectorAll("img");
+const overlay = document.getElementById("overlay");
+const title = document.querySelector(".title");
+const btnStartGame = document.querySelector("a");
+let reload = document.querySelector(".btn__reset");
 let missed = 0;
 
-for (let i = 0; i < 5; i++) {}
-
-const overlay = document.getElementById("overlay");
-const btnStartGame = document.querySelector("a");
 btnStartGame.addEventListener("click", () => {
   overlay.style.display = "none";
 });
@@ -66,4 +66,33 @@ qwerty.addEventListener("click", (e) => {
       missed++;
     }
   }
+  checWin();
 });
+
+function reloadGame() {
+  reload.addEventListener("click", () => {
+    location.reload();
+  });
+}
+
+function checWin() {
+  const liLetter = document.querySelectorAll(".letter");
+  const liShow = document.querySelectorAll(".show");
+
+  if (liLetter.length === liShow.length) {
+    overlay.style.display = "flex";
+
+    overlay.className = "win";
+    title.textContent = "You Won! Well Done.";
+    ul.style.display = "none";
+    reload.textContent = "Reload";
+    reloadGame();
+  } else if (missed > 4) {
+    overlay.style.display = "flex";
+    overlay.className = "lose";
+    title.textContent = "Game Over";
+    ul.style.display = "none";
+    reload.textContent = "Try Again";
+    reloadGame();
+  }
+}
