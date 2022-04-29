@@ -50,6 +50,7 @@ function checkLetter(btn) {
   for (let i = 0; i < letter.length; i++) {
     if (letter[i].textContent.toLowerCase() === btn.textContent) {
       letter[i].classList.add("show");
+      letter[i].style.transition = 0.9;
       match = btn.textContent;
     }
   }
