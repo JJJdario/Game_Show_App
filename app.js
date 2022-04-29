@@ -85,7 +85,7 @@ function checWin() {
     overlay.style.display = "flex";
 
     overlay.className = "win";
-    title.textContent = "You Won! Well Done.";
+    title.textContent = "You Won! Congratulations";
     ul.style.display = "none";
     reload.textContent = "Reload";
     reloadGame();
