@@ -1,13 +1,14 @@
 const qwerty = document.getElementById("qwerty");
-const phrase = document.getElementById("phrase");
+const container = document.getElementById("phrase");
 const ul = document.querySelector("#phrase ul");
-const button = document.querySelector("button");
 const imgHarts = document.querySelectorAll("img");
 const overlay = document.getElementById("overlay");
 const title = document.querySelector(".title");
 const btnStartGame = document.querySelector("a");
 let reload = document.querySelector(".btn__reset");
 let missed = 0;
+
+container.style.transition = 0.9;
 
 btnStartGame.addEventListener("click", () => {
   overlay.style.display = "none";
